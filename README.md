@@ -7,17 +7,14 @@ You can run this program from command line as follows:
 `java ToDoListDemo`
 
 You will be presented with with main menu
-
-`>> Welcome to ToDoLy`
-`>> You have X tasks todo and Y tasks are done!`
-`>> Pick an option:`
-`>> (1) Show Task List (by date or project)`
-`>> (2) Add New Task`
-`>> (3) Edit Task (update, mark as done, remove)`
-`>> (4) Save and Quit`
-`>> `
-`>> Please enter your choice [1-4]:`
+>>\>>Welcome to ToDoLy
+\>>You have 8 tasks todo and 9 tasks are done!
+\>> Pick an option:
+\>> (1) Show Task List (by date or project)
+\>> (2) Add New Task
+\>> (3) Edit Task (update, mark as done, remove)
+\>> (4) Save and Quit
+\>> 
+\>> Please enter your choice [1-4]:
 
 To save all tasks in a data file, and exit from the program, please choose option (4) to save and exit.
-
-
