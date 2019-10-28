@@ -46,6 +46,18 @@ public class Messages {
         System.out.print(RESET_TEXT);
     }
 
+    public static void editTaskMenu() {
+        System.out.println("\nTask Edit Options");
+        System.out.println("======================\n");
+        System.out.println("Pick an option:");
+        System.out.println("(1) Modify selected task");
+        System.out.println("(2) Mark selected task as COMPLETED");
+        System.out.println("(3) Delete selected task");
+        System.out.println("(4) Return to main menu "
+                + Messages.RED_TEXT + " [default choice, just press ENTER]"+Messages.RESET_TEXT);
+        System.out.print("\nPlease enter your choice [1-4]: ");
+    }
+
     public static void  byeMessage() {
         System.out.println(GREEN_TEXT);
         System.out.println(">>> All tasks are saved to data file");
