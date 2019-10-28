@@ -17,14 +17,6 @@ public class Task {
     private boolean complete;
     private Date dueDate;
 
-    public Task() {
-        this("Task 1", "Project 1", false, new Date());
-    }
-
-    public Task(String title) {
-        this(title, "Project 1", false, new Date());
-    }
-
     public Task(String title, String project) {
         this(title, project, false, new Date());
     }
