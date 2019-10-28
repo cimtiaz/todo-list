@@ -40,6 +40,12 @@ public class Messages {
         System.out.print("\nPlease enter your choice [1-2]: ");
     }
 
+    public static void editTaskSelection() {
+        System.out.println(GREEN_TEXT);
+        System.out.print(">>> Type a task number to EDIT and press ENTER key: ");
+        System.out.print(RESET_TEXT);
+    }
+
     public static void  byeMessage() {
         System.out.println(GREEN_TEXT);
         System.out.println(">>> All tasks are saved to data file");
