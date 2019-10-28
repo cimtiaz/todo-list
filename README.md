@@ -11,6 +11,6 @@ This program will save all tasks in the data file, therefore, next time when you
 # User Manual
 When you run the program, you will view main menu of the program (as shown below):
 
-![Main Menu](user-manual-img-01.PNG)
+![Main Menu](user-manual-img-01.png)
 
 To read more details, please view the `USER-MANUAL.md`
