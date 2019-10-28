@@ -30,6 +30,16 @@ public class Messages {
         System.out.print("Please enter your choice [1-4]: ");
     }
 
+    public static void listAllTasksMenu() {
+        System.out.println("\nDisplay All Tasks");
+        System.out.println("===================\n");
+        System.out.println("Pick an option:");
+        System.out.println("(1) Show Task List by date" +
+                Messages.RED_TEXT + " [default choice, just press ENTER key]" + Messages.RESET_TEXT);
+        System.out.println("(2) Show Task List by project");
+        System.out.print("\nPlease enter your choice [1-2]: ");
+    }
+
     public static void  byeMessage() {
         System.out.println(GREEN_TEXT);
         System.out.println(">>> All tasks are saved to data file");

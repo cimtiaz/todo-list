@@ -28,7 +28,7 @@ public class Main {
 
             switch (menuChoice) {
                 case "1":
-                    //Messages.listAllTasksMenu();
+                    Messages.listAllTasksMenu();
                     //todoList.listAllTasks(input.nextLine());
                     break;
                 case "2":
