@@ -11,7 +11,7 @@ import java.util.Scanner;
  **/
 
 
-public class Controller {
+public class Main {
     private static void showMenu() {
         System.out.println("\n\nWelcome to ToDoLy");
         System.out.println("=====================\n");
