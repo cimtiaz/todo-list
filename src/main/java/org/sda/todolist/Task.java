@@ -14,7 +14,7 @@ import java.util.Date;
 public class Task {
     private String title;
     private String project;
-    private boolean status;
+    private boolean complete;
     private Date dueDate;
 
     public Task() {
@@ -32,7 +32,7 @@ public class Task {
     public Task(String title, String project, boolean status, Date dueDate) {
         this.title = title;
         this.project = project;
-        this.status = status;
+        this.complete = status;
         this.dueDate = dueDate;
     }
 
@@ -52,17 +52,17 @@ public class Task {
         this.project = project;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isComplete() {
+        return complete;
     }
 
     public boolean toggleStatus() {
-        status=!status;
-        return status;
+        complete =!complete;
+        return complete;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void Completed() {
+        this.complete = true;
     }
 
     public Date getDueDate() {
@@ -74,6 +74,6 @@ public class Task {
     }
 
     public String printTask() {
-        return ("\nTitle: "+title+"\nProject: "+project+"\nStatus: "+status+"\nDue Date: "+dueDate+"\n");
+        return ("\nTitle: "+title+"\nProject: "+project+"\nStatus: "+ complete +"\nDue Date: "+dueDate+"\n");
     }
 }
