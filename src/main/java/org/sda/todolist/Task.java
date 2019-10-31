@@ -1,7 +1,9 @@
 package org.sda.todolist;
 
 import java.io.Serializable;
+import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -19,15 +21,13 @@ public class Task implements Serializable {
     private boolean complete;
     private LocalDate dueDate;
 
-    public Task(String title, String project) {
-        this(title, project, false, LocalDate.now());
-    }
 
-    public Task(String title, String project, boolean status, LocalDate dueDate) {
-        this.title = title;
-        this.project = project;
-        this.complete = status;
-        this.dueDate = dueDate;
+    public Task(String title, String project, LocalDate dueDate) {
+
+        this.setTitle(title);
+        this.setProject(project);
+        this.complete = false;
+        this.setDueDate(dueDate);
     }
 
     public String getTitle() {
@@ -46,7 +46,7 @@ public class Task implements Serializable {
     }
 
     public void setProject(String project) {
-        this.project = project;
+        this.project = project.trim();
     }
 
     public boolean isComplete() {
@@ -54,7 +54,7 @@ public class Task implements Serializable {
     }
 
     public boolean toggleStatus() {
-        complete =!complete;
+        complete = !complete;
         return complete;
     }
 
@@ -66,8 +66,15 @@ public class Task implements Serializable {
         return dueDate;
     }
 
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
+    public void setDueDate(LocalDate dueDate) throws DateTimeException {
+        // Throw DateTimeException if past date is given
+        if (dueDate.compareTo(LocalDate.now())<0) {
+            throw new DateTimeException("Past Date not allowed");
+        }
+
+        //Ensure dueDate is saved as yyyy-MM-dd
+        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.dueDate = LocalDate.parse(dueDate.format(formattedDate));
     }
 
     public String formattedStringOfTask() {
