@@ -69,7 +69,12 @@ public class Task {
         this.dueDate = dueDate;
     }
 
-    public String printTask() {
-        return ("\nTitle: "+title+"\nProject: "+project+"\nStatus: "+ complete +"\nDue Date: "+dueDate+"\n");
+    public String formattedStringOfTask() {
+        return (
+                "\nTitle     : " + title +
+                        "\nProject   : " + project +
+                        "\nStatus    : " + (complete?"Completed":"NOT COMPLETED") +
+                        "\nDue Date  : " + dueDate +
+                        "\n");
     }
 }
