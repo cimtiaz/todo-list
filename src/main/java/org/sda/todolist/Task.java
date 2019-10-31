@@ -19,14 +19,11 @@ public class Task implements Serializable {
     private boolean complete;
     private LocalDate dueDate;
 
-    public Task(String title, String project) {
-        this(title, project, false, LocalDate.now());
-    }
 
-    public Task(String title, String project, boolean status, LocalDate dueDate) {
+    public Task(String title, String project, LocalDate dueDate) {
         this.title = title;
         this.project = project;
-        this.complete = status;
+        this.complete = false;
         this.dueDate = dueDate;
     }
 
