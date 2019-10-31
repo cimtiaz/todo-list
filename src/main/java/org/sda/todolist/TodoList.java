@@ -3,6 +3,7 @@ package org.sda.todolist;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Scanner;
 
 /**
  * This class represents ToDoList which contains the ArrayList of Tasks
@@ -21,6 +22,29 @@ public class TodoList {
 
     public void addTask(String title, String project, LocalDate dueDate) {
         this.taskList.add(new Task(title,project,dueDate));
+    }
+
+    public boolean readTaskFromUser() {
+        Scanner scan = new Scanner(System.in);
+
+        try {
+            System.out.println(Messages.GREEN_TEXT + "Please enter the following details to add a task:" + Messages.RESET_TEXT);
+            System.out.print(">>> Task Title  : ");
+            String title = scan.nextLine();
+            System.out.print(">>> Project Name: ");
+            String project = scan.nextLine();
+            System.out.print(">>> Due Date [example: 2019-12-31] : ");
+            LocalDate dueDate = LocalDate.parse(scan.nextLine());
+
+            this.taskList.add(new Task(title,project,dueDate));
+            Messages.showMessage("Task is added successfully", false);
+
+            return true;
+        } catch (Exception e) {
+            Messages.showMessage(e.getMessage(),true);
+            return false;
+        }
+
     }
 
     public void listAllTasksWithIndex() {
