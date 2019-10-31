@@ -32,8 +32,11 @@ public class Task {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String title) throws NullPointerException {
+        if (title.trim().equals("") || title == null) {
+            throw new NullPointerException("REQUIRED: Title can not be empty.");
+        }
+        this.title = title.trim();
     }
 
     public String getProject() {
