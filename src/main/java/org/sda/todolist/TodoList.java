@@ -18,14 +18,6 @@ public class TodoList {
         taskList = new ArrayList<>();
     }
 
-    public void addTask(Task task) {
-        this.taskList.add(task);
-    }
-
-    public void addTask() {
-        int num = taskList.size()+1;
-        this.taskList.add(new Task("Task "+num,"Project"));
-    }
 
     public void listAllTasks(String sortBy) {
         Messages.separator('=',75);
