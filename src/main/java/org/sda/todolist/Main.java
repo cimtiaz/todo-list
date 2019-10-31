@@ -32,7 +32,7 @@ public class Main {
                     todoList.listAllTasks(input.nextLine());
                     break;
                 case "2":
-                    //todoList.readTaskFromUser();
+                    todoList.readTaskFromUser();
                     break;
                 case "3":
                     //todoList.editTask();
