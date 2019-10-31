@@ -1,5 +1,6 @@
 package org.sda.todolist;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import java.util.Date;
  **/
 
 
-public class Task {
+public class Task implements Serializable {
     private String title;
     private String project;
     private boolean complete;
