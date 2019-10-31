@@ -18,34 +18,47 @@ public class Main {
         TodoList todoList = new TodoList();
         String menuChoice = "-17";
 
-        Scanner input = new Scanner(System.in);
+        try {
+            Scanner input = new Scanner(System.in);
 
-        Messages.showMessage("Welcome to ToDoList", false);
+            //todoList.readFromFile(filename);
 
-        while (!menuChoice.equals("4")) {
-            Messages.mainMenu(5, 2);
-            menuChoice = input.nextLine();
+            Messages.showMessage("Welcome to ToDoList", false);
 
-            switch (menuChoice) {
-                case "1":
-                    Messages.listAllTasksMenu();
-                    todoList.listAllTasks(input.nextLine());
-                    break;
-                case "2":
-                    todoList.readTaskFromUser();
-                    break;
-                case "3":
-                    //todoList.editTask();
-                    break;
-                case "4":
-                    break;
+            while (!menuChoice.equals("4")) {
+                Messages.mainMenu(todoList.notCompletedCount(), todoList.completedCount());
+                menuChoice = input.nextLine();
 
-                default:
-                    Messages.unknownMessage();
+                switch (menuChoice) {
+                    case "1":
+                        Messages.listAllTasksMenu();
+                        todoList.listAllTasks(input.nextLine());
+                        break;
+                    case "2":
+                        todoList.readTaskFromUser();
+                        break;
+                    case "3":
+                        todoList.listAllTasksWithIndex();
+                        Messages.editTaskSelection();
+                        todoList.editTask(input.nextLine());
+                        break;
+                    case "4":
+                        break;
+
+                    default:
+                        Messages.unknownMessage();
+                }
             }
+
+            //todoList.saveToFile(filename);
+            Messages.byeMessage();
+
+        } catch (Exception e) {
+            Messages.showMessage("UNCAUGHT EXCEPTION THROWN", true);
+            System.out.println("Trying to save the unsaved tasks in data file");
+            //todoList.saveToFile(filename);
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
         }
-
-        Messages.byeMessage();
-
     }
 }
