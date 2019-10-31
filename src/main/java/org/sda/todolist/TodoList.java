@@ -23,6 +23,26 @@ public class TodoList {
         this.taskList.add(new Task(title,project,dueDate));
     }
 
+    public void listAllTasksWithIndex() {
+        String displayFormat = "%-4s%-35s %-20s %-10s %-10s";
+
+        if (taskList.size()>0) {
+            System.out.println(String.format(displayFormat,"NUM","TITLE","PROJECT","DUE DATE","COMPLETED"));
+            System.out.println(String.format(displayFormat,"===","=====","=======","========","========="));
+        } else {
+            System.out.println(Messages.RED_TEXT + "No tasks to show" + Messages.RESET_TEXT);
+        }
+
+        taskList.stream()
+                .forEach(task -> System.out.println(String.format(displayFormat,
+                        taskList.indexOf(task)+1,
+                        task.getTitle(),
+                        task.getProject(),
+                        task.getDueDate(),
+                        (task.isComplete()?"YES":"NO")
+                )));
+    }
+
     public void listAllTasks(String sortBy) {
         Messages.separator('=',75);
         System.out.println(
