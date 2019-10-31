@@ -47,6 +47,43 @@ public class TodoList {
 
     }
 
+    public boolean readTaskFromUserToUpdate(Task task) {
+        Scanner scan = new Scanner(System.in);
+        boolean isTaskUpdated = false;
+
+        try {
+            System.out.println(Messages.GREEN_TEXT + "Please enter the following details to update a task:"
+                    + "\nIf you do not want to change any field, just press ENTER key!" + Messages.RESET_TEXT);
+            System.out.print(">>> Task Title  : ");
+            String title = scan.nextLine();
+            if (!(title.trim().equals("") || title == null)) {
+                task.setTitle(title);
+                isTaskUpdated = true;
+            }
+
+            System.out.print(">>> Project Name: ");
+            String project = scan.nextLine();
+            if (!(project.trim().equals("") || project == null)) {
+                task.setProject(project);
+                isTaskUpdated = true;
+            }
+
+            System.out.print(">>> Due Date [example: 2019-12-31] : ");
+            String dueDate = scan.nextLine();
+            if (!(dueDate.trim().equals("") || dueDate == null)) {
+                task.setDueDate(LocalDate.parse(dueDate));
+                isTaskUpdated = true;
+            }
+
+            Messages.showMessage("Task is " + (isTaskUpdated ? "updated successfully" : "NOT modified") + ": Returning to Main Menu", false);
+
+            return true;
+        } catch (Exception e) {
+            Messages.showMessage(e.getMessage(), true);
+            return false;
+        }
+    }
+
     public void listAllTasksWithIndex() {
         String displayFormat = "%-4s%-35s %-20s %-10s %-10s";
 
