@@ -21,7 +21,7 @@ public class Main {
         try {
             Scanner input = new Scanner(System.in);
 
-            //todoList.readFromFile(filename);
+            todoList.readFromFile(filename);
 
             Messages.showMessage("Welcome to ToDoList", false);
 
@@ -50,7 +50,7 @@ public class Main {
                 }
             }
 
-            //todoList.saveToFile(filename);
+            todoList.saveToFile(filename);
             Messages.byeMessage();
 
         } catch (Exception e) {
