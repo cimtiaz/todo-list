@@ -56,7 +56,7 @@ public class Main {
         } catch (Exception e) {
             Messages.showMessage("UNCAUGHT EXCEPTION THROWN", true);
             System.out.println("Trying to save the unsaved tasks in data file");
-            //todoList.saveToFile(filename);
+            todoList.saveToFile(filename);
             System.out.println(e.getMessage());
             System.out.println(e.getStackTrace());
         }
