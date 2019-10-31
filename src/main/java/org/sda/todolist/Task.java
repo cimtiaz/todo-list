@@ -1,5 +1,6 @@
 package org.sda.todolist;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -15,13 +16,13 @@ public class Task {
     private String title;
     private String project;
     private boolean complete;
-    private Date dueDate;
+    private LocalDate dueDate;
 
     public Task(String title, String project) {
-        this(title, project, false, new Date());
+        this(title, project, false, LocalDate.now());
     }
 
-    public Task(String title, String project, boolean status, Date dueDate) {
+    public Task(String title, String project, boolean status, LocalDate dueDate) {
         this.title = title;
         this.project = project;
         this.complete = status;
@@ -60,11 +61,11 @@ public class Task {
         this.complete = true;
     }
 
-    public Date getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
