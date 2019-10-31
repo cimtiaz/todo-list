@@ -1,5 +1,6 @@
 package org.sda.todolist;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -18,6 +19,9 @@ public class TodoList {
         taskList = new ArrayList<>();
     }
 
+    public void addTask(String title, String project, LocalDate dueDate) {
+        this.taskList.add(new Task(title,project,dueDate));
+    }
 
     public void listAllTasks(String sortBy) {
         Messages.separator('=',75);
