@@ -4,4 +4,6 @@
 /gradlew
 /build/
 /tasks.obj
+.DS_Store
 /.idea/workspace.xml
+/usermanual/.DS_Store
