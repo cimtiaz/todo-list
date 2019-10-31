@@ -1,5 +1,11 @@
 package org.sda.todolist;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -199,5 +205,39 @@ public class TodoList {
         return (int) taskList.stream()
                 .filter(task -> !task.isComplete())
                 .count();
+    }
+
+    public void readFromFile(String filename) {
+        try {
+
+            if (!Files.isReadable(Paths.get(filename))) {
+                Messages.showMessage("The data file, i.e., " + filename + " does not exists", true);
+                return;
+            }
+
+            FileInputStream fileInputStream = new FileInputStream(filename);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+            taskList = (ArrayList<Task>) objectInputStream.readObject();
+
+            objectInputStream.close();
+            fileInputStream.close();
+        } catch (Exception e) {
+            Messages.showMessage(e.getMessage(),true);
+        }
+    }
+
+    public void saveToFile(String filename) {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(filename);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            objectOutputStream.writeObject(taskList);
+
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (Exception e) {
+            Messages.showMessage(e.getMessage(),true);
+        }
     }
 }
