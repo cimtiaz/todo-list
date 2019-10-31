@@ -18,10 +18,6 @@ public class TodoList {
         taskList = new ArrayList<>();
     }
 
-    public TodoList(ArrayList<Task> taskList) {
-        this.taskList = taskList;
-    }
-
     public void addTask(Task task) {
         this.taskList.add(task);
     }
