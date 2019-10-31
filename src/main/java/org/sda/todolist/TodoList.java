@@ -150,11 +150,49 @@ public class TodoList {
         }
     }
 
+    public void editTask(String selectedTask) {
+        try {
+            if (selectedTask.trim().equals("") || selectedTask == null) {
+                throw new NullPointerException("INVALID TASK NUM: Returning to Main Menu");
+            }
+
+            int taskIndex = Integer.parseInt(selectedTask) - 1;
+            if (taskIndex < 0 || taskIndex > taskList.size()) {
+                throw new NullPointerException("INVALID TASK NUM: Returning to Main Menu");
+            }
+
+            Task task = taskList.get(taskIndex);
+
+            Messages.showMessage("Task Num " + selectedTask + "  is selected:" + task.formattedStringOfTask(), false);
+
+            Messages.editTaskMenu();
+            Scanner scan = new Scanner(System.in);
+            String editChoice = scan.nextLine();
+            switch (editChoice) {
+                case "1":
+                    readTaskFromUserToUpdate(task);
+                    break;
+                case "2":
+                    task.Completed();
+                    Messages.showMessage("Task Num " + selectedTask + " is marked as Completed: Returning to Main Menu", false);
+                    break;
+                case "3":
+                    taskList.remove(task);
+                    Messages.showMessage("Task Num " + selectedTask + " is Deleted: Returning to Main Menu", true);
+                    break;
+                default:
+                    Messages.showMessage("Returning to Main Menu", true);
+            }
+        } catch (Exception e) {
+            Messages.showMessage(e.getMessage(),true);
+        }
+    }
+
+
     public int completedCount() {
         return (int) taskList.stream()
                 .filter(Task::isComplete)
                 .count();
-
     }
 
     public int notCompletedCount() {
