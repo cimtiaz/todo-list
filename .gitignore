@@ -3,3 +3,5 @@
 /gradlew.bat
 /gradlew
 /build/
+/tasks.obj
+/.idea/workspace.xml
