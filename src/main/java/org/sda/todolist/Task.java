@@ -1,5 +1,7 @@
 package org.sda.todolist;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -11,25 +13,17 @@ import java.util.Date;
  **/
 
 
-public class Task {
+public class Task implements Serializable {
     private String title;
     private String project;
     private boolean complete;
-    private Date dueDate;
-
-    public Task() {
-        this("Task 1", "Project 1", false, new Date());
-    }
-
-    public Task(String title) {
-        this(title, "Project 1", false, new Date());
-    }
+    private LocalDate dueDate;
 
     public Task(String title, String project) {
-        this(title, project, false, new Date());
+        this(title, project, false, LocalDate.now());
     }
 
-    public Task(String title, String project, boolean status, Date dueDate) {
+    public Task(String title, String project, boolean status, LocalDate dueDate) {
         this.title = title;
         this.project = project;
         this.complete = status;
@@ -40,8 +34,11 @@ public class Task {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String title) throws NullPointerException {
+        if (title.trim().equals("") || title == null) {
+            throw new NullPointerException("REQUIRED: Title can not be empty.");
+        }
+        this.title = title.trim();
     }
 
     public String getProject() {
@@ -65,15 +62,20 @@ public class Task {
         this.complete = true;
     }
 
-    public Date getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
-    public String printTask() {
-        return ("\nTitle: "+title+"\nProject: "+project+"\nStatus: "+ complete +"\nDue Date: "+dueDate+"\n");
+    public String formattedStringOfTask() {
+        return (
+                "\nTitle     : " + title +
+                        "\nProject   : " + project +
+                        "\nStatus    : " + (complete?"Completed":"NOT COMPLETED") +
+                        "\nDue Date  : " + dueDate +
+                        "\n");
     }
 }
